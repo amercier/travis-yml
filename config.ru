@@ -5,7 +5,7 @@ require 'travis/yaml/web'
 require 'travis/yaml/web/basic_auth'
 require 'travis/yaml/web/env'
 
-if Travis::Yaml::Web::Env.staging?
+if Travis::Yaml::Web::Env.staging? || Travis::Yaml::Web::Env.production?
   use Rack::Cors do
     allow do
       origins '*'
@@ -25,4 +25,3 @@ if ENV['SENTRY_DSN']
 end
 
 run Travis::Yaml::Web
-
